@@ -54,11 +54,11 @@ Each dataset includes geometry files, FHI-aims configuration files, and training
 **Note**: Due to file size constraints, density fitting basis overlap matrices are provided only for the first geometry of graphene and hBN as a reference.
 
 **Structure** (each `[material]/` subdirectory):
-- `coefficients/`: Expansion coefficients for training.
-- `projections/`: Basis projections for training.
+- `coefficients/` (`coefficients.tar`): Expansion coefficients for training. Please extract the `tar` files to access the individual files.
+- `projections/` (`projections.tar`): Basis projections for training. Please extract the `tar` files to access the individual files.
 - `overlaps/`: Density fitting basis overlap matrices (first geometry, for only graphene and hBN).
 - `dft_data/`: FHI-aims output files (first geometry only).
-- `[material].training.xyz`: Training geometries.
+- `[material].training.xyz`: Training geometries (without the large `ri_overlap.out` density fitting overlap matrix).
 - `[material].control.in`: FHI-aims calculation settings.
 
 For example dft data:
