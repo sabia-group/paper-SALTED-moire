@@ -15,10 +15,6 @@ Placeholders marked with `[xxx]` and `???` should be replaced with actual values
 
 For detailed instructions on model training and prediction, please refer to the [SALTED tutorial](https://fhi-aims-club.gitlab.io/tutorials/fhi-aims-with-salted).
 
-## License
-
-This repository is licensed under CC-BY-4.0. See [LICENSE](LICENSE) for more details.
-
 ## Citation
 
 If you use this dataset in your research, please cite both the dataset and the paper:
@@ -37,6 +33,16 @@ SALTED Software:
 ```bibtex
 [to be added upon publication]
 ```
+
+## Versions
+## Versions
+
+- **SALTED**: Version 3.0.0 (git commit `91c85a78`, 2025-06-04)
+- **FHI-aims**: Versions 241121 and 240507 are used in this work
+    - **Note**: FHI-aims version 240830 or later is recommended for improved density fitting basis ordering.
+    - To replicate the pre-240830 density fitting basis sequence with newer versions, add `sort_product_basis .true.` to `control.in`.
+- **featomic**: Version 0.6.1
+
 
 ## Directories
 
