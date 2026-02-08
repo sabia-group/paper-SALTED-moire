@@ -10,9 +10,10 @@ Last Update: Feb 2026
 
 This dataset contains training and test structures, along with model configurations, used to demonstrate the SALTED framework for predicting electronic structures of twisted bilayer moire materials.
 
-The dataset covers five 2D bilayer materials: graphene, hBN, TiS$_2$, ZrS$_2$, and MoS$_2$.
+The dataset covers five 2D bilayer materials: graphene, hBN, TiS2, ZrS2, and MoS2.
+Placeholders marked with `[xxx]` and `???` should be replaced with actual values as determined by the specific context of the calculation.
 
-In this repo, `[xxx]` and triple question mark `???` indicate placeholders to be filled in with the actual values, which can be determined from the context.
+For detailed instructions on model training and prediction, please refer to the [SALTED tutorial](https://fhi-aims-club.gitlab.io/tutorials/fhi-aims-with-salted).
 
 ## License
 
@@ -20,7 +21,7 @@ This repository is licensed under CC-BY-4.0. See [LICENSE](LICENSE) for more det
 
 ## Citation
 
-If you use thid dataset in your research, please cite both the dataset and the paper:
+If you use this dataset in your research, please cite both the dataset and the paper:
 
 Paper:
 ```bibtex
@@ -41,33 +42,29 @@ SALTED Software:
 
 ### `training_datasets/`
 
-Training datasets per material for SALTED model training.
-Due to large density fitting basis overlap matrices, we provide geometry files and `control.in` files for FHI-aims calculations.
+This directory contains material-specific datasets for training the SALTED model.
+Due to the large size of density fitting basis overlap matrices, we provide geometry files and control.in files to generate the necessary data via FHI-aims calculations.
 
 File naming conventions: `[material].[usage]`.
 `[usage]` can be
-- `training.xyz` for training dataset geometry files.
-- `control.in` for FHI-aims calculation settings.
-
-For model training and prediction, please refer to the [SALTED tutorial](https://fhi-aims-club.gitlab.io/tutorials/fhi-aims-with-salted).
+- `training.xyz`: Geometry files for the training dataset.
+- `control.in`: Configuration settings for FHI-aims calculations.
 
 ### `test_datasets/`
 
-Test/moire dataset per materials for testing band accuracy.
-Due to large band structure files, we provide geometry files and `control.in` files for FHI-aims calculations.
+This directory contains moire test datasets for evaluating band prediction accuracy.
+Due to the large size of band structure files, we provide the geometry files and control.in files required for FHI-aims calculations.
 
 File naming conventions: `[material].[usage]`.
 `[usage]` can be
-- `test.xyz` for test dataset geometry files.
-- `control.in` for FHI-aims calculation settings.
+- `test.xyz`: Geometry files for the test dataset.
+- `control.in`: Configuration settings for FHI-aims calculations.
 
 ### `models/`
 
-SALTED model `inp.yaml` example file for band predictions or density predictions.
-Full trained models are not included due to file size (total tens of GBs).
-Any part that needs to be adapted is marked with `"[xxx]"`.
-All parameters can be found in the paper and the SI.
-A detailed model configuration tutorial can be found in the [SALTED tutorial](https://fhi-aims-club.gitlab.io/tutorials/fhi-aims-with-salted).
-
-An example model configuration file is provided for graphene band prediction using SOAP descriptor in `inp.graphene.band.soap.yaml`.
+This directory includes example `inp.example.yaml` files for SALTED model band or density predictions.
+Note that fully trained models (each has tens of GBs due to RKHS vectors) are not included.
+Configurable parameters are marked with "[xxx]".
+All specific parameters used in this study can be found in the paper and the supplementary information.
+An example configuration for graphene band prediction using the SOAP descriptor is provided in `inp.graphene.band.soap.yaml`.
 
