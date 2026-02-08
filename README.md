@@ -61,7 +61,7 @@ Each dataset includes geometry files, FHI-aims configuration files, and training
 - `[material].training.xyz`: Training geometries (without the large `ri_overlap.out` density fitting overlap matrix).
 - `[material].control.in`: FHI-aims calculation settings.
 
-For example dft data:
+For the example dft data, coefficients, and projections:
 - graphene, hBN, TiS2: Generated using FHI-aims version 240507.
 - ZrS2, MoS2: Generated using FHI-aims version 241121.
 
