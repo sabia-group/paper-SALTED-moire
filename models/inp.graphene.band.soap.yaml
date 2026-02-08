@@ -1,0 +1,53 @@
+# Example: SALTED inp.yaml for graphene density prediction using SOAP descriptor
+# `./` means the current working directory
+
+# workflow label and root directory
+salted:
+  saltedname: model_graphene_soap_regul1e-3
+  saltedpath: ./
+
+# system general parameters
+system:
+  filename: ./graphene.training.xyz
+  species: [C,]
+  parallel: True
+
+# quantum mechanical info
+qm:
+  path2qm: ./qmdata
+  qmcode: aims
+  dfbasis: graphene_light
+
+# prediction data
+prediction:
+  filename: ./graphene.testing.xyz
+  predname: prediction
+  save_descriptor: true
+  predict_data: ./aims_predicted_data
+
+# atomic environment parameters
+descriptor:
+  rep1:
+    type: rho
+    rcut: 6.0
+    sig: 0.3
+    nrad: 6
+    nang: 6
+    neighspe: [C,]
+  rep2:
+    type: rho
+    rcut: 6.0
+    sig: 0.3
+    nrad: 6
+    nang: 6
+    neighspe: [C,]
+
+# Gaussian process regression variables
+gpr:
+  z: 2.0
+  Menv: 200
+  Ntrain: 400
+  trainfrac: 1.0
+  regul: 1e-3
+  blocksize: 20
+  trainsel: random

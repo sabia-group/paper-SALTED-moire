@@ -12,7 +12,7 @@ This dataset contains training and test structures, along with model configurati
 
 The dataset covers five 2D bilayer materials: graphene, hBN, TiS$_2$, ZrS$_2$, and MoS$_2$.
 
-In this repo, `[xxx]` indicates placeholders to be filled in with the actual values, which can be determined from the context.
+In this repo, `[xxx]` and triple question mark `???` indicate placeholders to be filled in with the actual values, which can be determined from the context.
 
 ## License
 
@@ -44,19 +44,30 @@ SALTED Software:
 Training datasets per material for SALTED model training.
 Due to large density fitting basis overlap matrices, we provide geometry files and `control.in` files for FHI-aims calculations.
 
+File naming conventions: `[material].[usage]`.
+`[usage]` can be
+- `training.xyz` for training dataset geometry files.
+- `control.in` for FHI-aims calculation settings.
+
+For model training and prediction, please refer to the [SALTED tutorial](https://fhi-aims-club.gitlab.io/tutorials/fhi-aims-with-salted).
+
 ### `test_datasets/`
 
-Test dataset per materials for testing band accuracy.
+Test/moire dataset per materials for testing band accuracy.
 Due to large band structure files, we provide geometry files and `control.in` files for FHI-aims calculations.
+
+File naming conventions: `[material].[usage]`.
+`[usage]` can be
+- `test.xyz` for test dataset geometry files.
+- `control.in` for FHI-aims calculation settings.
 
 ### `models/`
 
-Optimized SALTED model `inp.yaml` configuration files for band predictions or density predictions.
+SALTED model `inp.yaml` example file for band predictions or density predictions.
 Full trained models are not included due to file size (total tens of GBs).
-However, provided configurations enable exact reproduction by retraining with SALTED software.
+Any part that needs to be adapted is marked with `"[xxx]"`.
+All parameters can be found in the paper and the SI.
+A detailed model configuration tutorial can be found in the [SALTED tutorial](https://fhi-aims-club.gitlab.io/tutorials/fhi-aims-with-salted).
 
-
-
-
-
+An example model configuration file is provided for graphene band prediction using SOAP descriptor in `inp.graphene.band.soap.yaml`.
 

@@ -1,0 +1,49 @@
+# workflow label and root directory
+salted:
+  saltedname: "[any name one wants]"
+  saltedpath: "[path to model training work dir, e.g. `./` for current dir]"
+
+# system general parameters
+system:
+  filename: "[path to xyz files in `training_datasets`]"
+  species: "[a list of atomic species, e.g. [C,] or [B,N,], without quotes]"
+
+# quantum mechanical info
+qm:
+  path2qm: "[path to the training dataset DFT calculation directory]"
+  qmcode: aims
+  dfbasis: "[name of the density fitting basis set as you defined, e.g. graphene_light]"
+
+# prediction data
+prediction:
+  filename: "[path to xyz files in `test_datasets`]"
+  predname: prediction
+  save_descriptor: true
+  predict_data: "[path to a dir where you want to save the predicted data, e.g. `./aims_predicted_data`]"
+
+# atomic environment parameters
+descriptor:
+  rep1:
+    type: "[type of the descriptor, rho for SOAP, rho for LODE, V for LOVV]"
+    rcut: 6.0
+    sig: 0.3
+    nrad: 6
+    nang: 6
+    neighspe: "[same as system.species above]"
+  rep2:
+    type: "[type of the descriptor, rho for SOAP, V for LODE, V for LOVV]"
+    rcut: 6.0
+    sig: 0.3
+    nrad: 6
+    nang: 6
+    neighspe: "[same as system.species above]"
+
+# Gaussian process regression variables
+gpr:
+  z: 2.0
+  Menv: 200
+  Ntrain: 400
+  trainfrac: 1.0
+  regul: 1e-8
+  blocksize: 20
+  trainsel: random
