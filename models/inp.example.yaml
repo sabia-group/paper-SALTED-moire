@@ -18,7 +18,6 @@ qm:
 prediction:
   filename: "[path to xyz files in `test_datasets`]"
   predname: prediction
-  save_descriptor: true
   predict_data: "[path to a dir where you want to save the predicted data, e.g. `./aims_predicted_data`]"
 
 # atomic environment parameters

@@ -1,0 +1,42 @@
+salted:
+  saltedname: "[any name one wants]"
+  saltedpath: ./
+
+system:
+  filename: "[either training geometries or prediction geometries]"
+  species: [Ti, S]
+
+qm:
+  path2qm: "[path to the training dataset DFT calculation directory]"
+  qmcode: aims
+  dfbasis: "[name of the density fitting basis set as one defined]"
+
+prediction:
+  filename: "[either training geometries or prediction geometries]"
+  predname: prediction
+  predict_data: ./aims_predicted_data
+
+descriptor:
+  rep1:
+    type: rho
+    rcut: 6.0
+    sig: 0.3
+    nrad: 6
+    nang: 6
+    neighspe: [Ti, S]
+  rep2:
+    type: rho
+    rcut: 6.0
+    sig: 0.3
+    nrad: 6
+    nang: 6
+    neighspe: [Ti, S]
+
+gpr:
+  z: 2.0
+  Menv: 200
+  Ntrain: 400
+  trainfrac: 1.0
+  regul: 1e-6
+  blocksize: 40
+  trainsel: random

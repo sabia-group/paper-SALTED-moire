@@ -22,7 +22,6 @@ qm:
 prediction:
   filename: ./graphene.testing.xyz
   predname: prediction
-  save_descriptor: true
   predict_data: ./aims_predicted_data
 
 # atomic environment parameters
