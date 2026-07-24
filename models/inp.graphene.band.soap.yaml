@@ -20,7 +20,7 @@ qm:
 
 # prediction data
 prediction:
-  filename: ./graphene.testing.xyz
+  filename: ./graphene.test.xyz
   predname: prediction
   predict_data: ./aims_predicted_data
 

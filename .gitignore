@@ -1,0 +1,9 @@
+# Large .h5 model files are shipped as split parts (<name>.h5.partNN) plus a
+# .sha256 checksum, then reassembled locally with combine_h5.sh. Ignore the
+# reconstructed full files so they are never committed (they exceed GitHub's
+# per-file limits). The .partNN pieces and .sha256 files ARE tracked.
+/models/graphene_chg_regul/optim_soap_regul1e-3/equirepr_optim_soap_regul1e-3/projector_M200_zeta2.0.h5
+/models/hBN_chg_regul/optim_lovv_regul1e-9/equirepr_optim_lovv_regul1e-9/FEAT_M-200.h5
+/models/MoS2_chg_regul/optim_lovv_regul1e-12_svt1e-2/equirepr_optim_lovv_regul1e-12_svt1e-2/FEAT_M-200.h5
+/models/TiS2_chg_regul/optim_lovv_regul1e-14_svt1e-6/equirepr_optim_lovv_regul1e-14_svt1e-6/FEAT_M-200.h5
+/models/ZrS2_chg_regul/optim_lovv_regul1e-8_svt1e-2/equirepr_optim_lovv_regul1e-8_svt1e-2/FEAT_M-200.h5

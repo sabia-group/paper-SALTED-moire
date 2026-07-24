@@ -1,18 +1,18 @@
 salted:
-  saltedname: "[any name one wants]"
+  saltedname: optim_lovv_regul1e-12_svt1e-2
   saltedpath: ./
 
 system:
-  filename: "[either training geometries or prediction geometries]"
+  filename: ../../../training_datasets/MoS2/MoS2.training.xyz
   species: [Mo, S]
 
 qm:
-  path2qm: "[path to the training dataset DFT calculation directory]"
+  path2qm: ../../../training_datasets/MoS2/
   qmcode: aims
-  dfbasis: "[name of the density fitting basis set as one defined]"
+  dfbasis: MoS2_inter_auxMo
 
 prediction:
-  filename: "[either training geometries or prediction geometries]"
+  filename: ../../../test_datasets/MoS2/MoS2.test.xyz
   predname: prediction
   predict_data: ./aims_predicted_data
 

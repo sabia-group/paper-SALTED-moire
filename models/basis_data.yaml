@@ -1,0 +1,32 @@
+graphene_light:
+  C:
+    lmax: 4
+    nmax: [8, 6, 6, 3, 1]
+hBN_light:
+  B:
+    lmax: 4
+    nmax: [8, 6, 6, 3, 1]
+  N:
+    lmax: 4
+    nmax: [8, 7, 6, 3, 1]
+TiS2_light:
+  S:
+    lmax: 6
+    nmax: [10, 10, 9, 8, 4, 2, 1]
+  Ti:
+    lmax: 6
+    nmax: [12, 10, 10, 10, 7, 3, 1]
+ZrS2_light_auxZr:
+  S:
+    lmax: 6
+    nmax: [10, 10, 9, 8, 4, 2, 1]
+  Zr:
+    lmax: 6
+    nmax: [15, 14, 15, 14, 13, 9, 6]
+MoS2_inter_auxMo:
+  Mo:
+    lmax: 6
+    nmax: [15, 15, 15, 14, 14, 12, 8]
+  S:
+    lmax: 6
+    nmax: [10, 10, 9, 8, 8, 4, 3]

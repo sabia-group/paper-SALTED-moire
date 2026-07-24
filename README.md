@@ -1,12 +1,12 @@
-# Long-Range Machine Learning of Electron Density for Twisted Bilayer Moire Materials
+# Datasets and Models for Paper "Long-Range Machine Learning of Electron Density for Twisted Bilayer Moire Materials"
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18556914.svg)](https://doi.org/10.5281/zenodo.18556914)
 
 Authors: Zekun Lou, Alan M. Lewis, and Mariana Rossi
 
-DOI: [to be added upon publication]
+Paper DOI: [10.1103/4575-9cmx](https://doi.org/10.1103/4575-9cmx)
 
-Last Update: June 2026
+Last Update: July 2026
 
 ## Overview
 
@@ -22,6 +22,11 @@ For detailed instructions on model training and prediction, please refer to the 
 If you use this dataset in your research, please cite both the dataset and the paper:
 
 Paper:
+```bibtex
+[to be added upon publication]
+```
+
+arXiv:
 ```bibtex
 @misc{louLongRangeMachineLearning2026,
   title = {Long-{{Range Machine Learning}} of {{Electron Density}} for {{Twisted Bilayer Moir\'e Materials}}},
@@ -88,6 +93,9 @@ Contains moire test datasets for evaluating band structure prediction accuracy. 
 
 **Structure** (each `[material]/` subdirectory):
 - `[index]/`: Individual subdirectories for each test geometry's FHI-aims calculation.
+    - Graphene: indices 1-10, ordered by decreasing twist angle.
+    - hBN: indices 1-10 and 11-20, each ordered by decreasing twist angle; the two groups correspond to parallel and antiparallel stacking, respectively.
+    - TiS2, ZrS2, MoS2: indices 1-8 and 11-18, each ordered by decreasing twist angle; the two groups correspond to parallel and antiparallel stacking, respectively.
 - `[material].test.xyz`: Test geometry files.
 - `[material].control.in`: FHI-aims configuration settings.
 
