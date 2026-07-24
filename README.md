@@ -42,10 +42,12 @@ arXiv:
 Dataset:
 ```bibtex
 @misc{louSabiagroupPaperSALTEDmoireDataset2026,
-  title = {Sabia-Group/Paper-{{SALTED-moire}}: {{Dataset}} Accompanying First Version of Paper},
-  author = {Lou, Zekun},
+  title = {Datasets and Models for Paper ``Long-Range Machine Learning of Electron Density for Twisted Bilayer Moir\'e Materials''},
+  shorttitle = {Sabia-Group/Paper-{{SALTED-moire}}},
+  author = {Lou, Zekun and Lewis, Alan M. and Rossi, Mariana},
   year = 2026,
-  doi = {10.5281/ZENODO.18556914},
+  publisher = {Zenodo},
+  doi = {10.5281/zenodo.18556914},
   howpublished = {Zenodo}
 }
 ```
