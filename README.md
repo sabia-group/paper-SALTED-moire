@@ -29,7 +29,7 @@ Paper:
 arXiv:
 ```bibtex
 @misc{louLongRangeMachineLearning2026,
-  title = {Long-{{Range Machine Learning}} of {{Electron Density}} for {{Twisted Bilayer Moir\'e Materials}}},
+  title = {{Long-Range Machine Learning of Electron Density for Twisted Bilayer Moir\'e Materials}},
   author = {Lou, Zekun and Lewis, Alan M. and Rossi, Mariana},
   year = 2026,
   publisher = {arXiv},
@@ -42,8 +42,8 @@ arXiv:
 Dataset:
 ```bibtex
 @misc{louSabiagroupPaperSALTEDmoireDataset2026,
-  title = {Datasets and Models for Paper ``Long-Range Machine Learning of Electron Density for Twisted Bilayer Moir\'e Materials''},
-  shorttitle = {Sabia-Group/Paper-{{SALTED-moire}}},
+  title = {{Datasets and Models for Paper ``Long-Range Machine Learning of Electron Density for Twisted Bilayer Moir\'e Materials''}},
+  shorttitle = {{sabia-group/paper-SALTED-moire}},
   author = {Lou, Zekun and Lewis, Alan M. and Rossi, Mariana},
   year = 2026,
   publisher = {Zenodo},
@@ -106,21 +106,20 @@ Contains moire test datasets for evaluating band structure prediction accuracy. 
 Contains example configuration files for SALTED model training and prediction.
 
 **Contents**:
-- Example `inp.example.yaml` files for band structure and density predictions.
+- Example `inp.example.yaml` file for band structure and density predictions.
     - Configurable parameters marked with `[xxx]`.
 - `inp.graphene.band.soap.yaml`: Reference configuration for graphene band prediction using SOAP descriptor.
+- `basis_data.yaml`: Density-fitting basis definitions for the five materials, required to run prediction (see [Running a prediction](#running-a-prediction-on-the-provided-models) below).
 - `[material]_[expr_name]/`: Subdirectories for each material and experiment.
     - Each dir contains one SALTED configuration file.
     - Models for band structure predictions in the following directories are further provided with regression weights for comparison:
         - `models/graphene_chg_regul/optim_soap_regul1e-3`
         - `models/hBN_chg_regul/optim_lovv_regul1e-9`
-        - `models/TiS2_chg_regul/optim_lovv_regul1e-14`
-        - `models/ZrS2_chg_regul/optim_lovv_regul1e-8`
-        - `models/MoS2_chg_regul/optim_lovv_regul1e-12`
+        - `models/TiS2_chg_regul/optim_lovv_regul1e-14_svt1e-6`
+        - `models/ZrS2_chg_regul/optim_lovv_regul1e-8_svt1e-2`
+        - `models/MoS2_chg_regul/optim_lovv_regul1e-12_svt1e-2`
 
 For complete parameter values used in this study, refer to the paper and supplementary information.
-
-**Note**: Trained models are not included due to file size (several to tens of GBs per model). Since overlap matrices are provided only for the first geometry of each material, direct prediction from this dataset is not possible. To reproduce results, users will need to regenerate complete datasets (including all overlap matrices) via DFT calculations, then train models following the SALTED tutorial.
 
 ### `mace/`
 
@@ -133,5 +132,36 @@ Contains MACE model training datasets and MACE model weights.
     - MACE version: 0.3.14.
     - Datasets: `dbbn_5x5_geoms_forces.train.xyz`, `dbbn_5x5_geoms_forces.valid.xyz`, `dbbn_5x5_geoms_forces.test.xyz`.
 
+
+## Running a prediction on the provided models
+
+The five directories listed under `models/` ship with everything needed to run `salted.prediction`: sparse features, RKHS projectors, Wigner symbols, spherical averages, and regression weights. To reproduce a prediction:
+
+1. **Install SALTED** (see [Versions](#versions)), better in editable mode.
+
+2. **Register the density-fitting bases.** `salted.prediction` resolves the basis named in each model's `inp.qm.dfbasis` from SALTED's internal registry (`<salted package>/basis_data.yaml`), not from this repository. Append the bases shipped in `basis_data.yaml` to that registry with the command below. It merges the entries in without touching any existing ones, and re-running is a no-op (an identical basis is skipped; a genuine name conflict raises an error rather than silently overwriting):
+
+    ```bash
+    cd models
+    python -c "import yaml; from salted.basis_client import BasisClient; c = BasisClient(); [c.write(n, d) for n, d in yaml.safe_load(open('basis_data.yaml')).items()]"
+    ```
+
+3. **Reassemble the split model files.** The sparse feature descriptor (`FEAT_M-200.h5`) and RKHS projector (`projector_M200_zeta2.0.h5`) are shipped as `*.h5.partNN` pieces plus a `*.h5.sha256` checksum. Reconstruct them with the provided script:
+
+    ```bash
+    cd models  # reassemble every model, or cd into a single model directory
+    ./combine_h5.sh  # concatenates the parts back into the full .h5 and verifies checksums
+    ```
+
+4. **Run the prediction** from inside a model directory:
+
+    ```bash
+    cd graphene_chg_regul/optim_soap_regul1e-3
+    python -m salted.prediction  # optionally: mpirun -n <N> python -m salted.prediction
+    ```
+
+    Predicted density-fitting coefficients are written to `predictions_<saltedname>_prediction/`. Reference outputs from our own runs are kept in `reference_predictions/` for comparison.
+
+**Note**: These models are provided for prediction purposes. Retraining from scratch instead requires reconstructing the full training dataset, which is large and not included here.
 
 
