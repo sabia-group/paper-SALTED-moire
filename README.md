@@ -1,4 +1,4 @@
-# Datasets and Models for Paper "Long-Range Machine Learning of Electron Density for Twisted Bilayer Moire Materials"
+# Datasets and Models for the Paper "Long-Range Machine Learning of Electron Density for Twisted Bilayer Moire Materials"
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18556914.svg)](https://doi.org/10.5281/zenodo.18556914)
 

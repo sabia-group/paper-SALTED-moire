@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 message: "If you use this dataset, please cite it as below (and the accompanying paper)."
 type: dataset
-title: "Datasets and models for paper \"Long-range Machine Learning of Electron Density for Twisted Bilayer Moiré Materials\""
+title: "Datasets and models for the paper \"Long-range Machine Learning of Electron Density for Twisted Bilayer Moiré Materials\""
 authors:
   - family-names: Lou
     given-names: Zekun
